@@ -16,4 +16,11 @@ class PostController extends Controller
 
         return view('posts.index', compact('posts'));
     }
+
+    public function detalhe($id){
+
+        $post = \App\Post::find($id);
+
+        return view('posts.detalhe', ['title' => $post->title, 'content' => $post->content]);
+    }
 }
