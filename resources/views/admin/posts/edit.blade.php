@@ -15,7 +15,12 @@
 
     {!! Form::model($post, ['route'=>['admin.posts.update',$post->id], 'method'=>'put']) !!}
 
-    @include('admin.posts._form');
+    @include('admin.posts._form')
+
+    <div class="form-group">
+        {!! Form::label('tags', 'Tags', ['class' => 'control-label']) !!}
+        {!! Form::textarea('tags', $post->tagList, ['class' => 'form-control']) !!}
+    </div>
 
     <div class="form-group">
         {!! Form::submit('Save Post',['class'=>'btn btn-primary']) !!}
