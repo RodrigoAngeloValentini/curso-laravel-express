@@ -13,5 +13,15 @@ class DatabaseSeeder extends Seeder
     {
         $this->call('PostsTableSeeder');
         $this->call('TagTableSeeder');
+
+        factory('App\User')->create(
+            [
+                'name' => 'Rodrigo',
+                'email' => 'rodrigoangelovalentini@gmail.com',
+                'password' => bcrypt(123456),
+                'remember_token' => str_random(10),
+            ]
+        );
+
     }
 }

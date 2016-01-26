@@ -16,6 +16,12 @@ class PostAdminController extends Controller
         $this->post = $post;
     }
 
+//    public function auth()
+//    {
+//        $user = \App\User::find(1);
+//        Auth::login($user);
+//    }
+
     public function index()
     {
 
