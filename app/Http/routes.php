@@ -1,6 +1,8 @@
 <?php
 Route::group(['middleware' => ['web']], function () {
 
+    Route::auth();
+
     Route::get('/', 'PostController@index');
     Route::get('blog', 'PostController@index');
     Route::get('blog/{id}', 'PostController@detalhe');
