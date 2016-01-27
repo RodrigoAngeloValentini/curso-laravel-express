@@ -6,11 +6,6 @@ Route::get('blog/{id}', 'PostController@detalhe');
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::controllers([
-       'auth' => 'Auth\AuthController',
-        'password' => 'Auth\PasswordController',
-    ]);
-
     Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function(){
         Route::group(['prefix'=>'posts'], function(){
             Route::get('',['as' => 'admin.posts.index', 'uses' => 'PostAdminController@index']);
