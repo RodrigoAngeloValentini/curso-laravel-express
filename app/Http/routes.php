@@ -1,24 +1,11 @@
 <?php
-
-Route::get('/', 'PostController@index');
-Route::get('blog', 'PostController@index');
-Route::get('blog/{id}', 'PostController@detalhe');
-
-Route::get('/auth', function(){
-    if(Auth::attempt(['email' => 'rodrigoangelovalentini@gmail.com', 'password' => 123456])){
-        return "Oi";
-    }
-
-    return "Falhou";
-});
-
-
 Route::group(['middleware' => ['web']], function () {
 
-    Route::controllers([
-       'auth' => 'Auth\AuthController',
-        'password' => 'Auth\PasswordController',
-    ]);
+    Route::auth();
+
+    Route::get('/', 'PostController@index');
+    Route::get('blog', 'PostController@index');
+    Route::get('blog/{id}', 'PostController@detalhe');
 
     Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function(){
         Route::group(['prefix'=>'posts'], function(){
